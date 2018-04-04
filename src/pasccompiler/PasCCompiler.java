@@ -14,7 +14,7 @@ import java.io.RandomAccessFile;
  */
 public class PasCCompiler {
     
-    private static final int END_OF_FILE = -1; // contante para fim do arquivo
+    private static final int END_OF_FILE = -1; // constante para fim do arquivo
     private static int lookahead = 0; // armazena o último caractere lido do arquivo	
     public static int linha = 1; // contador de linhas
     public static int coluna = 1; // contador de linhas
@@ -100,10 +100,13 @@ public class PasCCompiler {
                     else if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
                         // Permance no estado = 1
                         if(c == '\n')  {
-                            
+                            linha++;
                         }
                         else if(c == '\t') {
                            
+                        }
+                        if(c == '\t'){
+                          coluna++;  
                         }
                     }
                     else if (Character.isLetter(c)){
