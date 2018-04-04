@@ -105,9 +105,6 @@ public class PasCCompiler {
                         else if(c == '\t') {
                            
                         }
-                        if(c == '\t'){
-                          coluna++;  
-                        }
                     }
                     else if (Character.isLetter(c)){
                         lexema.append(c);
