@@ -9,7 +9,7 @@ package pasccompiler;
  *
  * @author Guilherme Passos
  */
-public enum Label {
+public enum TagToken {
      // fim de arquivo
     EOF,
     

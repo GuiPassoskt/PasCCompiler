@@ -12,13 +12,13 @@ package pasccompiler;
 public class Token {
   
     private String lexema;
-    private Label label;
+    private TagToken tag;
     private int linha;
     private int coluna;
 
-    public Token(Label label, String lexema, int linha, int coluna) {
+    public Token(TagToken tag, String lexema, int linha, int coluna) {
         this.lexema = lexema;
-        this.label = label;
+        this.tag = tag;
         this.linha = linha;
         this.coluna = coluna;
     }
@@ -31,12 +31,12 @@ public class Token {
         this.lexema = lexema;
     }
 
-    public Label getLabel() {
-        return label;
+    public TagToken getTagToken() {
+        return tag;
     }
 
-    public void setLabel(Label label) {
-        this.label = label;
+    public void setTagToken(TagToken tag) {
+        this.tag = tag;
     }
 
     public int getLinha() {
@@ -57,7 +57,7 @@ public class Token {
     
     @Override
     public String toString() {
-        return "<" + label + ", \"" + lexema + "\">";
+        return "<" + tag + ", \"" + lexema + "\">";
     }
     
 }

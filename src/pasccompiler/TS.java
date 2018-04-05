@@ -20,37 +20,37 @@ public class TS {
 
         // Inserindo as palavras reservadas
         Token word;
-        word = new Token(Label.KW, "program", 0, 0);
+        word = new Token(TagToken.KW, "program", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "if", 0, 0);
+        word = new Token(TagToken.KW, "if", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "else", 0, 0);
+        word = new Token(TagToken.KW, "else", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "while", 0, 0);
+        word = new Token(TagToken.KW, "while", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "write", 0, 0);
+        word = new Token(TagToken.KW, "write", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "read", 0, 0);
+        word = new Token(TagToken.KW, "read", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "num", 0, 0);
+        word = new Token(TagToken.KW, "num", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "char", 0, 0);
+        word = new Token(TagToken.KW, "char", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "not", 0, 0);
+        word = new Token(TagToken.KW, "not", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "or", 0, 0);
+        word = new Token(TagToken.KW, "or", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
         
-        word = new Token(Label.KW, "and", 0, 0);
+        word = new Token(TagToken.KW, "and", 0, 0);
         this.tabelaSimbolos.put(word, new Parametro());
     }
     

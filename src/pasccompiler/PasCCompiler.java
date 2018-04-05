@@ -96,7 +96,7 @@ public class PasCCompiler {
             switch(estado) {
                 case 1:
                     if (lookahead == END_OF_FILE)
-                        return new Token(Label.EOF, "EOF", linha, coluna);
+                        return new Token(TagToken.EOF, "EOF", linha, coluna);
                     else if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
                         // Permance no estado = 1
                         if(c == '\n')  {
@@ -131,39 +131,39 @@ public class PasCCompiler {
                     }
                     else if (c == '*') {
                         estado = 18;
-                        return new Token(Label.OP_MULT, "*", linha, coluna);
+                        return new Token(TagToken.OP_MULT, "*", linha, coluna);
                     }
                     else if(c == '+') {
                         estado = 19;
-                        return new Token(Label.OP_AD, "+", linha, coluna);
+                        return new Token(TagToken.OP_AD, "+", linha, coluna);
                     }
                     else if(c == '-') {
                         estado = 20;
-                        return new Token(Label.OP_MIN, "-", linha, coluna);
+                        return new Token(TagToken.OP_MIN, "-", linha, coluna);
                     }
                     else if(c == ';') {
                         estado = 21;
-                        return new Token(Label.SMB_SEM, ";", linha, coluna);
+                        return new Token(TagToken.SMB_SEM, ";", linha, coluna);
                     }
                     else if(c == ',') {
                         estado = 25;
-                        return new Token(Label.SMB_COM, ",", linha, coluna);
+                        return new Token(TagToken.SMB_COM, ",", linha, coluna);
                     }
                     else if(c == '(') {
                         estado = 22;
-                        return new Token(Label.SMB_OPA, "(", linha, coluna);
+                        return new Token(TagToken.SMB_OPA, "(", linha, coluna);
                     }
                     else if(c == ')') {
                         estado = 23;
-                        return new Token(Label.SMB_CPA, ")", linha, coluna);
+                        return new Token(TagToken.SMB_CPA, ")", linha, coluna);
                     }
                     else if(c == '{') {
                         estado = 22;
-                        return new Token(Label.SMB_OBC, "{", linha, coluna);
+                        return new Token(TagToken.SMB_OBC, "{", linha, coluna);
                     }
                     else if(c == '}') {
                         estado = 23;
-                        return new Token(Label.SMB_CBC, "}", linha, coluna);
+                        return new Token(TagToken.SMB_CBC, "}", linha, coluna);
                     }
                     else if(c == '"') {
                         estado = 24;
@@ -177,17 +177,17 @@ public class PasCCompiler {
                 case 2:
                     if (c == '=') { // Estado 3
                         estado = 3;
-                        return new Token(Label.OP_EQ, "==", linha, coluna);
+                        return new Token(TagToken.OP_EQ, "==", linha, coluna);
                     }
                     else {
                         retornaPonteiro();
-                        return new Token(Label.OP_ASS, "=", linha, coluna);
+                        return new Token(TagToken.OP_ASS, "=", linha, coluna);
                     }
                     
 		case 4:
                     if (c == '=') { // Estado 5
                         estado = 5;
-			return new Token(Label.OP_NE, "!=", linha, coluna);
+			return new Token(TagToken.OP_NE, "!=", linha, coluna);
                     }
                     else {
                         retornaPonteiro();
@@ -198,23 +198,23 @@ public class PasCCompiler {
                 case 6:
                     if (c == '=') { // Estado 7
                         estado = 7;
-			return new Token(Label.OP_LE, "<=", linha, coluna);
+			return new Token(TagToken.OP_LE, "<=", linha, coluna);
                     }
                     else { // Estado 8
                         estado = 8;
 			retornaPonteiro();
-			return new Token(Label.OP_LT, "<", linha, coluna);
+			return new Token(TagToken.OP_LT, "<", linha, coluna);
                     }
                     
                 case 9:
                     if (c == '=') { // Estado 10
                         estado = 10;
-                        return new Token(Label.OP_GE, ">=", linha, coluna);
+                        return new Token(TagToken.OP_GE, ">=", linha, coluna);
                     }
                     else { // Estado 11
                         estado = 11;
                         retornaPonteiro();
-                        return new Token(Label.OP_GT, ">", linha, coluna);
+                        return new Token(TagToken.OP_GT, ">", linha, coluna);
                     }
                     
                 case 12:
@@ -229,7 +229,7 @@ public class PasCCompiler {
                     else { // Estado 13
                         estado = 13;
                         retornaPonteiro();						
-			return new Token(Label.COM_NUM, lexema.toString(), linha, coluna);
+			return new Token(TagToken.COM_NUM, lexema.toString(), linha, coluna);
                     }
                     break;
                     
@@ -244,7 +244,7 @@ public class PasCCompiler {
                         Token token = tabelaSimbolos.retornaToken(lexema.toString());
                         
                         if (token == null) {
-                            return new Token(Label.ID, lexema.toString(), linha, coluna);
+                            return new Token(TagToken.ID, lexema.toString(), linha, coluna);
                         }
                         return token;
                     }
@@ -256,7 +256,7 @@ public class PasCCompiler {
                     }
                     else {
                         retornaPonteiro();
-			return new Token(Label.OP_DIV, lexema.toString(), linha, coluna);
+			return new Token(TagToken.OP_DIV, lexema.toString(), linha, coluna);
                     }
                     break;
                     
@@ -270,7 +270,7 @@ public class PasCCompiler {
                 case 24:
                     if (c == '"') {
                         estado = 25;
-                        return new Token(Label.LIT, lexema.toString(), linha, coluna);
+                        return new Token(TagToken.LIT, lexema.toString(), linha, coluna);
                     }
                     else if (lookahead == END_OF_FILE) {
                         sinalizaErro("String deve ser fechada com \" antes do fim de arquivo");
@@ -298,7 +298,7 @@ public class PasCCompiler {
                     }
                     else {
                         retornaPonteiro();						
-			return new Token(Label.COM_CHAR, lexema.toString(), linha, coluna);
+			return new Token(TagToken.COM_CHAR, lexema.toString(), linha, coluna);
                     }
             }
         }
@@ -325,7 +325,7 @@ public class PasCCompiler {
                 
             }
 	     
-	} while(token != null && token.getLabel() != Label.EOF);
+	} while(token != null && token.getTagToken() != TagToken.EOF);
 	lexer.fechaArquivo();
         
     }
