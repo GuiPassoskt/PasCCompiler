@@ -84,7 +84,11 @@ public class PasCCompiler {
             try {
                 lookahead = arquivoReferencia.read(); 
 		if(lookahead != END_OF_FILE) {
-                    c = (char) lookahead;
+                    
+                    //Conversão para minuscula
+                    c = Character.toLowerCase((char) lookahead);
+                    coluna++;
+                    
                 }
             }
             catch(IOException e) {
@@ -102,8 +106,11 @@ public class PasCCompiler {
                         if(c == '\n')  {
                             linha++;
                         }
+                        if(c == ' '){
+                           coluna++;
+                        }
                         else if(c == '\t') {
-                           
+                            
                         }
                     }
                     else if (Character.isLetter(c)){
@@ -317,6 +324,8 @@ public class PasCCompiler {
 	do {
             token = lexer.proxToken();
             
+            //preenche tabela de simbolos
+            tabelaSimbolos.put(token, new Parametro());
             // Imprime token
 	    if(token != null) {
                 System.out.println("Token: " + token.toString() + "\t Linha: " + linha + "\t Coluna: " + coluna);
@@ -326,6 +335,9 @@ public class PasCCompiler {
             }
 	     
 	} while(token != null && token.getTagToken() != TagToken.EOF);
+        //imprimi tabela de simbolos
+        System.out.println("\n");
+        System.out.println(tabelaSimbolos);
 	lexer.fechaArquivo();
         
     }

@@ -1,6 +1,6 @@
 program P1
-
 num VAR1;
 {
-	@VAR1;
+ VAR1;
+ var1;
 }
